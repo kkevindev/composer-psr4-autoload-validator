@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+$autoloadFile = dirname(__DIR__).'/vendor/autoload.php';
+
+if (!file_exists($autoloadFile)) {
+    fwrite(STDERR, "Dependencies are not installed. Run `composer install` first.\n");
+
+    exit(1);
+}
+
+require $autoloadFile;
+
+use Kkevindev\ComposerPSR4AutoloadValidator\Command\ValidateCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('kkevindev/composer-psr4-autoload-validator');
+$application->setAutoExit(true);
+$application->addCommand(new ValidateCommand());
+$application->setDefaultCommand(ValidateCommand::COMMAND_NAME, true);
+
+exit($application->run());

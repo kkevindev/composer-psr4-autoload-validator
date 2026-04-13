@@ -1,0 +1,36 @@
+{
+    "name": "kkevindev/composer-psr4-autoload-validator",
+    "description": "Small CLI wrapper around Composer's PSR-4 autoload validation.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "symfony/console": "^6.4 || ^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer": "*",
+        "phpunit/phpunit": "*",
+        "zenstruck/console-test": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kkevindev\\ComposerPSR4AutoloadValidator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kkevindev\\ComposerPSR4AutoloadValidator\\Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/kkevindev-composer-psr4-autoload-validator"
+    ],
+    "scripts": {
+        "run": "php bin/kkevindev-composer-psr4-autoload-validator",
+        "test": "vendor/bin/phpunit",
+        "cs-fix": "vendor/bin/php-cs-fixer fix",
+        "phpstan": "vendor/bin/phpstan analyse",
+        "composer-validate": "composer validate --strict"
+    }
+}
