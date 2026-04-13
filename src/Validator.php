@@ -8,7 +8,7 @@ final readonly class Validator
 {
     public function validate(): Result
     {
-        $command = 'composer dump-autoload --optimize --strict-psr --no-interaction 2>&1';
+        $command = '$(command -v composer) dump-autoload --optimize --strict-psr --no-interaction 2>&1';
         $outputLines = [];
         $exitCode = 0;
 
