@@ -3,10 +3,10 @@
 
 declare(strict_types=1);
 
-$autoloadFile = dirname(__DIR__).'/vendor/autoload.php';
+$autoloadFile = $_composer_autoload_path ?? dirname(__DIR__).'/vendor/autoload.php';
 
 if (!file_exists($autoloadFile)) {
-    fwrite(STDERR, "Dependencies are not installed. Run `composer install` first.\n");
+    fwrite(STDERR, "Unable to locate Composer autoload file.\n");
 
     exit(1);
 }
@@ -18,7 +18,7 @@ use Symfony\Component\Console\Application;
 
 $application = new Application('kkevindev/composer-psr4-autoload-validator');
 $application->setAutoExit(true);
-$application->addCommand(new ValidateCommand());
+$application->add(new ValidateCommand());
 $application->setDefaultCommand(ValidateCommand::COMMAND_NAME, true);
 
 exit($application->run());

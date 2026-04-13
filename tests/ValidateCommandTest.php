@@ -45,7 +45,7 @@ final class ValidateCommandTest extends TestCase
                 ->execute()
                 ->assertFaulty()
                 ->assertOutputContains('Found 1 PSR-4 autoload error.')
-                ->assertOutputContains('Class Kkevindev\\ComposerPSR4AutoloadValidator\\Tests\\Invalid\\InvalidNamespaceClass located in ./tests/InvalidNamespaceClass.php does not comply with psr-4 autoloading standard');
+                ->assertOutputContains('Class Kkevindev\\ComposerPSR4AutoloadValidator\\Tests\\Invalid\\InvalidNamespaceClass located in ./tests/InvalidNamespaceClass.php');
         } finally {
             unlink($fileLocation);
         }

@@ -36,9 +36,7 @@ final readonly class Validator
                 continue;
             }
 
-            if (str_ends_with($line, ' Skipping.')) {
-                $line = substr($line, 0, -10);
-            }
+            $line = explode(' does not comply with psr-4 autoloading standard', $line)[0];
 
             $violations[] = $line;
         }
